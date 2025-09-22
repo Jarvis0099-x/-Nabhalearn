@@ -34,7 +34,7 @@ export default function StudentDashboard() {
         return <LessonsView />
       case "progress":
         return <div className="p-6">Progress view coming soon...</div>
-     case "assignments":
+      case "assignments":
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-6">📚 Assignments</h2>
@@ -43,15 +43,7 @@ export default function StudentDashboard() {
         {/* Math Homework Card */}
         <div className="bg-primary text-primary-foreground rounded-lg p-4 shadow hover:shadow-lg cursor-pointer transition transform hover:-translate-y-1">
           <div className="flex items-center space-x-3 mb-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3" />
-            </svg>
+            <span className="text-xl">🧮</span>
             <h3 className="font-bold text-lg">Math Homework</h3>
           </div>
           <p className="text-sm text-muted-foreground">Due: 25th Sep</p>
@@ -60,15 +52,7 @@ export default function StudentDashboard() {
         {/* Science Project Card */}
         <div className="bg-secondary text-secondary-foreground rounded-lg p-4 shadow hover:shadow-lg cursor-pointer transition transform hover:-translate-y-1">
           <div className="flex items-center space-x-3 mb-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3" />
-            </svg>
+            <span className="text-xl">🔬</span>
             <h3 className="font-bold text-lg">Science Project</h3>
           </div>
           <p className="text-sm text-muted-foreground">Due: 28th Sep</p>
@@ -77,15 +61,7 @@ export default function StudentDashboard() {
         {/* History Essay Card */}
         <div className="bg-accent text-accent-foreground rounded-lg p-4 shadow hover:shadow-lg cursor-pointer transition transform hover:-translate-y-1">
           <div className="flex items-center space-x-3 mb-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3" />
-            </svg>
+            <span className="text-xl">📜</span>
             <h3 className="font-bold text-lg">History Essay</h3>
           </div>
           <p className="text-sm text-muted-foreground">Due: 30th Sep</p>

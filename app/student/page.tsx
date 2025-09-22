@@ -11,7 +11,9 @@ import { OfflineProvider } from "@/contexts/offline-context"
 
 export default function StudentDashboard() {
   // We still get user but don't use it for redirect
-  const { user, isLoading } = useAuth()
+  // Demo:fake a logged-in student
+  const user = {role: "student",name: "Demo Student" }
+  const isLoading = false
   const [activeTab, setActiveTab] = useState("dashboard")
 
   // 🟢 Temporarily disable redirect for demo
@@ -70,7 +72,176 @@ export default function StudentDashboard() {
     </div>
   );
       case "timetable":
-        return <div className="p-6">Timetable view coming soon...</div>
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-6">🕒 Timetable</h2>
+
+      {/* Timetable Grid */}
+      <div className="grid gap-4 md:grid-cols-5">
+        {/* Days Header */}
+        {["Time", "Monday", "Tuesday", "Wednesday", "Thursday"].map((day) => (
+          <div key={day} className="font-bold text-center p-2 border-b border-border">
+            {day}
+          </div>
+        ))}
+
+        {/* 9:00 - 10:00 Slot */}
+        <div className="p-2 border border-border font-bold text-center">9:00-10:00</div>
+        <div className="bg-primary text-primary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🧮</span>
+            <span>Math</span>
+          </div>
+          <p className="text-xs">Mr. Sharma</p>
+        </div>
+        <div className="bg-secondary text-secondary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>📖</span>
+            <span>English</span>
+          </div>
+          <p className="text-xs">Ms. Gupta</p>
+        </div>
+        <div className="bg-accent text-accent-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🔬</span>
+            <span>Science</span>
+          </div>
+          <p className="text-xs">Mr. Verma</p>
+        </div>
+        <div className="bg-tertiary text-tertiary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🖥️</span>
+            <span>Computer</span>
+          </div>
+          <p className="text-xs">Ms. Singh</p>
+        </div>
+
+        {/* 10:00 - 11:00 Slot */}
+        <div className="p-2 border border-border font-bold text-center">10:00-11:00</div>
+        <div className="bg-secondary text-secondary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>📖</span>
+            <span>English</span>
+          </div>
+          <p className="text-xs">Ms. Gupta</p>
+        </div>
+        <div className="bg-accent text-accent-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🧮</span>
+            <span>Math</span>
+          </div>
+          <p className="text-xs">Mr. Sharma</p>
+        </div>
+        <div className="bg-primary text-primary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>📜</span>
+            <span>History</span>
+          </div>
+          <p className="text-xs">Ms. Mehta</p>
+        </div>
+        <div className="bg-tertiary text-tertiary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🔬</span>
+            <span>Science</span>
+          </div>
+          <p className="text-xs">Mr. Verma</p>
+        </div>
+        <div className="bg-secondary text-secondary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🖌️</span>
+            <span>Art</span>
+          </div>
+          <p className="text-xs">Ms. Kapoor</p>
+        </div>
+      </div>
+    </div>
+  ); 
+ 
+      case "timetable":
+  return (
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-6">🕒 Timetable</h2>
+
+      {/* Timetable Grid */}
+      <div className="grid gap-4 md:grid-cols-5">
+        {/* Days Header */}
+        {["Time", "Monday", "Tuesday", "Wednesday", "Thursday"].map((day) => (
+          <div key={day} className="font-bold text-center p-2 border-b border-border">
+            {day}
+          </div>
+        ))}
+
+        {/* 9:00 - 10:00 Slot */}
+        <div className="p-2 border border-border font-bold text-center">9:00-10:00</div>
+        <div className="bg-primary text-primary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🧮</span>
+            <span>Math</span>
+          </div>
+          <p className="text-xs">Mr. Sharma</p>
+        </div>
+        <div className="bg-secondary text-secondary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>📖</span>
+            <span>English</span>
+          </div>
+          <p className="text-xs">Ms. Gupta</p>
+        </div>
+        <div className="bg-accent text-accent-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🔬</span>
+            <span>Science</span>
+          </div>
+          <p className="text-xs">Mr. Verma</p>
+        </div>
+        <div className="bg-tertiary text-tertiary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🖥️</span>
+            <span>Computer</span>
+          </div>
+          <p className="text-xs">Ms. Singh</p>
+        </div>
+
+        {/* 10:00 - 11:00 Slot */}
+        <div className="p-2 border border-border font-bold text-center">10:00-11:00</div>
+        <div className="bg-secondary text-secondary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>📖</span>
+            <span>English</span>
+          </div>
+          <p className="text-xs">Ms. Gupta</p>
+        </div>
+        <div className="bg-accent text-accent-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🧮</span>
+            <span>Math</span>
+          </div>
+          <p className="text-xs">Mr. Sharma</p>
+        </div>
+        <div className="bg-primary text-primary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>📜</span>
+            <span>History</span>
+          </div>
+          <p className="text-xs">Ms. Mehta</p>
+        </div>
+        <div className="bg-tertiary text-tertiary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🔬</span>
+            <span>Science</span>
+          </div>
+          <p className="text-xs">Mr. Verma</p>
+        </div>
+        <div className="bg-secondary text-secondary-foreground rounded-lg p-2 shadow text-center cursor-pointer hover:shadow-lg">
+          <div className="flex items-center justify-center space-x-2">
+            <span>🖌️</span>
+            <span>Art</span>
+          </div>
+          <p className="text-xs">Ms. Kapoor</p>
+        </div>
+      </div>
+    </div>
+  );
       case "digital":
         return <div className="p-6">Digital literacy view coming soon...</div>
       default:

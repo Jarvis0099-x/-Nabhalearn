@@ -1,38 +1,30 @@
+
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
+// We will still import useAuth but not enforce it for demo
 import { useAuth } from "@/contexts/auth-context"
-import { useRouter } from "next/navigation"
 import { StudentNav } from "@/components/student/student-nav"
 import { DashboardOverview } from "@/components/student/dashboard-overview"
 import { LessonsView } from "@/components/student/lessons-view"
 import { OfflineProvider } from "@/contexts/offline-context"
 
 export default function StudentDashboard() {
+  // We still get user but don't use it for redirect
   const { user, isLoading } = useAuth()
-  const router = useRouter()
   const [activeTab, setActiveTab] = useState("dashboard")
 
-  useEffect(() => {
-    if (!isLoading && (!user || user.role !== "student")) {
-      router.push("/")
-    }
-  }, [user, isLoading, router])
+  // 🟢 Temporarily disable redirect for demo
+  // useEffect(() => {
+  //   if (!isLoading && (!user || user.role !== "student")) {
+  //     router.push("/")
+  //   }
+  // }, [user, isLoading, router])
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-lg text-muted-foreground">Loading...</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (!user || user.role !== "student") {
-    return null
-  }
+  // 🟢 Also allow page to render even if no user
+  // if (!user || user.role !== "student") {
+  //   return null
+  // }
 
   const renderContent = () => {
     switch (activeTab) {

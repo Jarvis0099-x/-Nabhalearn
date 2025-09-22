@@ -1,0 +1,88 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import { useAuth } from "@/contexts/auth-context"
+import { useRouter } from "next/navigation"
+import { StudentNav } from "@/components/student/student-nav"
+import { DashboardOverview } from "@/components/student/dashboard-overview"
+import { LessonsView } from "@/components/student/lessons-view"
+import { OfflineProvider } from "@/contexts/offline-context"
+
+export default function StudentDashboard() {
+  const { user, isLoading } = useAuth()
+  const router = useRouter()
+  const [activeTab, setActiveTab] = useState("dashboard")
+
+  useEffect(() => {
+    if (!isLoading && (!user || user.role !== "student")) {
+      router.push("/")
+    }
+  }, [user, isLoading, router])
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-lg text-muted-foreground">Loading...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!user || user.role !== "student") {
+    return null
+  }
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "dashboard":
+        return <DashboardOverview />
+      case "lessons":
+        return <LessonsView />
+      case "progress":
+        return <div className="p-6">Progress view coming soon...</div>
+      case "assignments":
+        return <div className="p-6">Assignments view coming soon...</div>
+      case "timetable":
+        return <div className="p-6">Timetable view coming soon...</div>
+      case "digital":
+        return <div className="p-6">Digital literacy view coming soon...</div>
+      default:
+        return <DashboardOverview />
+    }
+  }
+
+  return (
+    <OfflineProvider>
+      <div className="min-h-screen bg-background flex">
+        {/* Sidebar Navigation */}
+        <div className="w-64 hidden md:block">
+          <StudentNav activeTab={activeTab} onTabChange={setActiveTab} />
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 overflow-auto">
+          <div className="p-6">{renderContent()}</div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden fixed bottom-0 left-0 right-0 bg-card border-t border-border">
+          <div className="flex justify-around py-2">
+            {["dashboard", "lessons", "progress", "assignments"].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`p-3 rounded-lg touch-target ${
+                  activeTab === tab ? "bg-primary text-primary-foreground" : "text-muted-foreground"
+                }`}
+              >
+                <div className="text-xs capitalize">{tab}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </OfflineProvider>
+  )
+}

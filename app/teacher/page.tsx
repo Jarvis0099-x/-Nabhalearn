@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { TeacherNav } from "@/components/teacher-nav"
+import { TeacherNav } from "@/components/teacher/teacher-nav"
 
 export default function TeacherDashboard() {
   const [activeTab, setActiveTab] = useState("dashboard")
